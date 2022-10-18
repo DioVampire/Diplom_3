@@ -17,8 +17,6 @@ import static ru.yandex.praktikum.page_object.BaseUrls.*;
 
 public class LoginTests {
 
-    MainPage mainPage;
-
     @Before
     public void setup() {
         closeWebDriver();

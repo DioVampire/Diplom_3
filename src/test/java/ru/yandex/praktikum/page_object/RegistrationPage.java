@@ -20,9 +20,15 @@ public class RegistrationPage {
     //Кнопка "Зарегистрироваться"
     @FindBy(how = How.XPATH, using = ".//button[text()='Зарегистрироваться']")
     private SelenideElement registrationButton;
-    //Поля Имя (индекс 0), Email (индекс 1), пароль (индекс 2)
-    @FindBy(how = How.XPATH, using = ".//input[@class='text input__textfield text_type_main-default']")
-    public ElementsCollection nameEmailPasswordFields;
+    //Поле имя на странице регистрации
+    @FindBy(how = How.XPATH, using = "//input[@class='text input__textfield text_type_main-default' and @name='name']")
+    private SelenideElement nameFieldOnRegistrationPage;
+    // Поле и-мейл на странице регистрации
+    @FindBy(how = How.XPATH, using = "//form[@class='Auth_form__3qKeq mb-20']/fieldset[2]/div/div/input")
+    private SelenideElement emailFieldOnRegistrationPage;
+    //Поле пароля на странице регистрации
+    @FindBy(how = How.XPATH, using = "//input[@class=\"text input__textfield text_type_main-default\" and @name=\"Пароль\"]")
+    private SelenideElement passwordFieldOnRegistrationPage;
     //Кнопка входа
     @FindBy(how = How.XPATH, using = ".//a[text()='Войти']")
     private SelenideElement loginButtonOnRegistration;
@@ -33,22 +39,22 @@ public class RegistrationPage {
     //Ввод имени на странице регистрации
     @Step("Set name on registration")
     public void setNameOnRegisterPage(String name) {
-        nameEmailPasswordFields.get(0).shouldBe(Condition.visible);
-        nameEmailPasswordFields.get(0).setValue(name);
+        nameFieldOnRegistrationPage.shouldBe(Condition.visible);
+        nameFieldOnRegistrationPage.setValue(name);
     }
 
     //Ввод почты на странице регистрации
     @Step("Set email on registration")
     public void setEmailOnRegisterPage(String email) {
-        nameEmailPasswordFields.get(1).shouldBe(Condition.visible);
-        nameEmailPasswordFields.get(1).setValue(email);
+        emailFieldOnRegistrationPage.shouldBe(Condition.visible);
+        emailFieldOnRegistrationPage.setValue(email);
     }
 
     //Ввод пароля на странице регистрации
     @Step("Set password on registration")
     public void setPasswordOnRegisterPage(String password) {
-        nameEmailPasswordFields.get(2).shouldBe(Condition.visible);
-        nameEmailPasswordFields.get(2).setValue(password);
+        passwordFieldOnRegistrationPage.shouldBe(Condition.visible);
+        passwordFieldOnRegistrationPage.setValue(password);
     }
 
     //Нажатие на кнопку регистрации
